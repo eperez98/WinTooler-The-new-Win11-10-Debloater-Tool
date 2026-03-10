@@ -1,12 +1,12 @@
 #Requires -RunAsAdministrator
 <#
 .SYNOPSIS
-    WinToolerV1 v0.6 BETA - Windows 10/11 Optimization and Debloat Utility
+    WinToolerV1 v0.6.1 BETA Build 4.100 - Windows 10/11 Optimization and Debloat Utility
     Made by ErickP (Eperez98) | https://github.com/eperez98
     Inspired by ChrisTitusTech/winutil
 .NOTES
     Run as Administrator. Requires Windows 10/11.
-    v0.6 BETA RELEASE - Windows 11 ISO Downloader + Roadmap.
+    v0.6.1 BETA Build 4.100 RELEASE - Windows 11 ISO Downloader + Roadmap.
 #>
 
 Set-StrictMode -Off
@@ -32,14 +32,13 @@ if ($PSScriptRoot -and (Test-Path $PSScriptRoot)) {
 
 # GLOBALS
 $global:AppName       = "WinToolerV1"
-$global:AppVersion    = "0.6 BETA"
+$global:AppVersion    = "0.6.1 BETA Build 4.100"
 $global:AppAuthor     = "ErickP (Eperez98)"
 $global:AppGitHub     = "https://github.com/eperez98"
 $global:LogFile       = "$env:TEMP\WinToolerV1_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
 $global:OSBuild       = [System.Environment]::OSVersion.Version.Build
 $global:IsWin11       = $global:OSBuild -ge 22000
 $global:OSLabel       = if ($global:IsWin11) { "Windows 11" } else { "Windows 10" }
-$global:AppUpdates    = @{}   # populated during pre-flight: Id -> "X.Y.Z available"
 
 function global:Write-WTLog {
     param([string]$Msg, [string]$Level = "INFO")
@@ -64,12 +63,12 @@ function global:Write-CLISection {
 Clear-Host
 Write-Host ""
 Write-Host "  ==========================================" -ForegroundColor DarkCyan
-Write-Host "    WinToolerV1  v0.6 BETA" -ForegroundColor Cyan
+Write-Host "    WinToolerV1  v0.6.1 BETA Build 4.100" -ForegroundColor Cyan
 Write-Host "    by ErickP (Eperez98) - github.com/eperez98" -ForegroundColor DarkGray
 Write-Host "    $($global:OSLabel) Build $($global:OSBuild)" -ForegroundColor DarkGray
 Write-Host "  ==========================================" -ForegroundColor DarkCyan
 Write-Host ""
-Write-WTLog "WinToolerV1 v0.6 BETA starting on $env:COMPUTERNAME | $($global:OSLabel) Build $($global:OSBuild)"
+Write-WTLog "WinToolerV1 v0.6.1 BETA Build 4.100 starting on $env:COMPUTERNAME | $($global:OSLabel) Build $($global:OSBuild)"
 
 # ADMIN CHECK
 $id = [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -89,28 +88,23 @@ Write-CLI "Creating restore point before making any changes..." "Cyan"
 try {
     Enable-ComputerRestore -Drive "C:\" -ErrorAction SilentlyContinue
     $rpDesc = "WinToolerV1 pre-run $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
-    Checkpoint-Computer -Description $rpDesc -RestorePointType "MODIFY_SETTINGS" -ErrorAction Stop
+    # Temporarily set frequency to 0 to bypass the 24hr cooldown warning, then restore
+    $regPath = "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\SystemRestore"
+    $prevFreq = Get-ItemProperty $regPath -Name "SystemRestorePointCreationFrequency" -ErrorAction SilentlyContinue
+    $prev = if ($prevFreq) { $prevFreq.SystemRestorePointCreationFrequency } else { $null }
+    Set-ItemProperty $regPath -Name "SystemRestorePointCreationFrequency" -Type DWord -Value 0 -Force -ErrorAction SilentlyContinue
+    Checkpoint-Computer -Description $rpDesc -RestorePointType "MODIFY_SETTINGS" -ErrorAction Stop 2>$null
+    # Restore original value (or remove if it wasn't set before)
+    if ($null -ne $prev) {
+        Set-ItemProperty $regPath -Name "SystemRestorePointCreationFrequency" -Type DWord -Value $prev -Force -ErrorAction SilentlyContinue
+    } else {
+        Remove-ItemProperty $regPath -Name "SystemRestorePointCreationFrequency" -ErrorAction SilentlyContinue
+    }
     Write-CLI "Restore point created successfully." "Green"
     Write-WTLog "Pre-run restore point created: $rpDesc"
 } catch {
-    # Windows enforces a 24hr cooldown by default - bypass it so we can always create one
-    $freq = Get-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\SystemRestore" `
-            -Name "SystemRestorePointCreationFrequency" -ErrorAction SilentlyContinue
-    if (-not $freq) {
-        Set-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\SystemRestore" `
-            -Name "SystemRestorePointCreationFrequency" -Type DWord -Value 0 -Force
-        try {
-            Checkpoint-Computer -Description $rpDesc -RestorePointType "MODIFY_SETTINGS" -ErrorAction Stop
-            Write-CLI "Restore point created (frequency limit bypassed)." "Green"
-            Write-WTLog "Pre-run restore point created after bypassing frequency limit"
-        } catch {
-            Write-CLI "Restore point skipped: $_" "DarkYellow"
-            Write-WTLog "Restore point failed: $_" "WARN"
-        }
-    } else {
-        Write-CLI "Restore point skipped (24hr cooldown active - previous point still valid)." "DarkYellow"
-        Write-WTLog "Restore point skipped: cooldown active"
-    }
+    Write-CLI "Restore point skipped (system protection may be off on C:\)." "DarkYellow"
+    Write-WTLog "Restore point failed: $_" "WARN"
 }
 
 # =====================================================
@@ -179,52 +173,13 @@ if ($nuget -and $nuget.Version -ge [Version]"2.8.5.201") {
     Write-DepRow "NuGet provider" "v$($nuget.Version)" "Green"
     Write-WTLog "NuGet: v$($nuget.Version)"
 } else {
-    Write-DepRow "NuGet provider" "Installing..." "Yellow"
-    try {
-        # Download the DLL directly - avoids the interactive prompt entirely
-        $nugetDll  = "$env:ProgramFiles\PackageManagement\ProviderAssemblies
-uget.8.5.208\Microsoft.PackageManagement.NuGetProvider.dll"
-        $nugetDir  = Split-Path $nugetDll
-        $nugetUrl  = "https://cdn.oneget.org/providers/Microsoft.PackageManagement.NuGetProvider-2.8.5.208.dll"
-        if (-not (Test-Path $nugetDll)) {
-            New-Item $nugetDir -ItemType Directory -Force | Out-Null
-            (New-Object System.Net.WebClient).DownloadFile($nugetUrl, $nugetDll)
-        }
-        # Now import silently - no prompt
-        Import-PackageProvider -Name NuGet -Force -ErrorAction SilentlyContinue | Out-Null
-        Write-DepRow "NuGet provider" "Installed" "Green"
-        Write-WTLog "NuGet installed via direct download"
-    } catch {
-        # Fallback: try the cmdlet with -Force (suppresses prompt when DLL exists)
-        try {
-            Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 `
-                -Force -Confirm:$false -Scope AllUsers -ErrorAction Stop | Out-Null
-            Write-DepRow "NuGet provider" "Installed" "Green"
-            Write-WTLog "NuGet installed via Install-PackageProvider"
-        } catch {
-            Write-DepRow "NuGet provider" "Not installed (PSWindowsUpdate may be limited)" "DarkYellow"
-            Write-WTLog "NuGet install failed: $_" "WARN"
-        }
-    }
+    # NuGet not required - Windows Updates tab uses winget directly
+    Write-DepRow "NuGet provider" "Not required (using winget)" "DarkGray"
+    Write-WTLog "NuGet: skipped - Windows Updates uses winget"
 }
 
-$pswu = Get-Module -ListAvailable -Name PSWindowsUpdate -ErrorAction SilentlyContinue |
-        Sort-Object Version -Descending | Select-Object -First 1
-if ($pswu) {
-    Write-DepRow "PSWindowsUpdate" "v$($pswu.Version)" "Green"
-    Write-WTLog "PSWindowsUpdate: v$($pswu.Version)"
-} else {
-    Write-DepRow "PSWindowsUpdate" "Installing..." "Yellow"
-    try {
-        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
-        Install-Module -Name PSWindowsUpdate -Scope AllUsers -Force -AllowClobber -ErrorAction Stop
-        Write-DepRow "PSWindowsUpdate" "Installed" "Green"
-        Write-WTLog "PSWindowsUpdate installed"
-    } catch {
-        Write-DepRow "PSWindowsUpdate" "Failed" "Red"
-        Write-WTLog "PSWindowsUpdate failed: $_" "ERROR"
-    }
-}
+# PSWindowsUpdate not used - Windows Updates handled via winget + UsoClient
+Write-WTLog "PSWindowsUpdate: skipped - using winget"
 
 $policy = Get-ExecutionPolicy -Scope LocalMachine
 if ($policy -in @("Restricted","AllSigned")) {
@@ -258,53 +213,12 @@ if ($global:WingetPath) {
 # =====================================================
 #  STEP 3 - APP UPDATE CHECK (CLI, before GUI)
 # =====================================================
-if ($global:WingetPath) {
-    Write-CLISection "Checking Installed App Updates"
-    Write-CLI "Scanning for outdated apps via winget..." "Cyan"
-    Write-CLI "(This runs once - results shown in the App Updates tab)" "DarkGray"
-
-    try {
-        $upgradeRaw = & $global:WingetPath upgrade --include-unknown --disable-interactivity 2>&1 |
-                      Where-Object { $_ -match '\S' }
-
-        $updateCount = 0
-        $inTable     = $false
-        foreach ($line in $upgradeRaw) {
-            # Detect table start (header row with "Name" and "Version")
-            if ($line -match 'Name\s+Id\s+Version\s+Available') { $inTable = $true; continue }
-            if (-not $inTable) { continue }
-            if ($line -match '^[-\s]+$') { continue }
-
-            # Parse lines: columns are space-separated, Id is the key col
-            $parts = $line -split '\s{2,}'
-            if ($parts.Count -ge 3) {
-                $id        = ($parts | Select-Object -Index 1).Trim()
-                $current   = ($parts | Select-Object -Index 2).Trim()
-                $available = if ($parts.Count -ge 4) { ($parts | Select-Object -Index 3).Trim() } else { "newer" }
-
-                if ($id -and $available -and $available -ne "Unknown" -and $id -notmatch 'pinned') {
-                    $global:AppUpdates[$id] = @{ Current=$current; Available=$available }
-                    $updateCount++
-                    $shortId = if ($id.Length -gt 35) { $id.Substring(0,32) + "..." } else { $id }
-                    Write-CLI "$shortId  $current -> $available" "DarkYellow"
-                    Write-WTLog "Update available: $id  $current -> $available"
-                }
-            }
-        }
-
-        if ($updateCount -eq 0) {
-            Write-CLI "All apps are up to date." "Green"
-            Write-WTLog "App update check: all current"
-        } else {
-            Write-CLI "" "White"
-            Write-CLI "$updateCount update(s) available - see App Updates tab in GUI" "Yellow"
-            Write-WTLog "App update check: $updateCount updates available"
-        }
-    } catch {
-        Write-CLI "Could not check for updates: $_" "DarkYellow"
-        Write-WTLog "App update check failed: $_" "WARN"
-    }
-}
+# =====================================================
+#  STEP 3 - APP UPDATE CHECK  (skipped at startup — runs in background from GUI)
+# =====================================================
+# Update scan moved to GUI background job (BtnReCheckUpdates / ModePillUpdates).
+# Avoids blocking the CLI window before the GUI opens.
+Write-WTLog "App update scan deferred to GUI background job"
 
 Write-Host ""
 Write-Host "  Dependency check complete. Launching GUI..." -ForegroundColor Green

@@ -6,7 +6,8 @@
     "Description": "Privacy-focused browser with built-in ad blocking",
     "Icon": "B",
     "Color": "#E2552C",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -15,7 +16,8 @@
     "Description": "Fast and widely-used browser by Google",
     "Icon": "B",
     "Color": "#4285F4",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -24,7 +26,8 @@
     "Description": "Open-source base for Chrome without Google telemetry",
     "Icon": "B",
     "Color": "#6E8FBF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -33,7 +36,8 @@
     "Description": "Privacy-hardened Firefox fork, zero telemetry",
     "Icon": "B",
     "Color": "#00ACFF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -42,7 +46,8 @@
     "Description": "Fast, private and open-source browser",
     "Icon": "B",
     "Color": "#FF7139",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -51,7 +56,8 @@
     "Description": "Feature-rich browser with VPN and ad blocker",
     "Icon": "B",
     "Color": "#FF1B2D",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -60,7 +66,8 @@
     "Description": "Gaming browser with CPU/RAM/Network limiters",
     "Icon": "B",
     "Color": "#D4291F",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -69,7 +76,8 @@
     "Description": "Chromium fork optimised for maximum performance",
     "Icon": "B",
     "Color": "#4FC3F7",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -78,7 +86,8 @@
     "Description": "Anonymous browsing via the Tor network",
     "Icon": "B",
     "Color": "#7D4698",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -87,7 +96,8 @@
     "Description": "Chromium without any Google integration",
     "Icon": "B",
     "Color": "#5E8DBA",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Browsers",
@@ -96,7 +106,8 @@
     "Description": "Fast Firefox-based browser with legacy extension support",
     "Icon": "B",
     "Color": "#00ACFF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Communications",
@@ -105,7 +116,8 @@
     "Description": "Fast remote desktop and remote access tool",
     "Icon": "C",
     "Color": "#EF4335",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -114,7 +126,8 @@
     "Description": "Voice, video and text chat for communities",
     "Icon": "C",
     "Color": "#5865F2",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -123,7 +136,8 @@
     "Description": "Secure decentralised messaging on Matrix network",
     "Icon": "C",
     "Color": "#0DBD8B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Communications",
@@ -132,7 +146,8 @@
     "Description": "All-in-one app combining Slack, WhatsApp and more",
     "Icon": "C",
     "Color": "#7B68EE",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -141,7 +156,8 @@
     "Description": "End-to-end encrypted messaging and file sharing",
     "Icon": "C",
     "Color": "#4C8EFF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Communications",
@@ -150,7 +166,8 @@
     "Description": "Collaboration platform for meetings and chat",
     "Icon": "C",
     "Color": "#6264A7",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -159,16 +176,18 @@
     "Description": "Low-latency open-source voice chat for gaming",
     "Icon": "C",
     "Color": "#5E9ECB",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Communications",
     "Name": "Signal",
-    "Id": "OpenWhisperSystems.Signal",
+    "Id": "Signal.Signal",
     "Description": "Encrypted messaging app focused on privacy",
     "Icon": "C",
     "Color": "#3A76F0",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -177,7 +196,8 @@
     "Description": "Business messaging and collaboration platform",
     "Icon": "C",
     "Color": "#4A154B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -186,7 +206,8 @@
     "Description": "Fast and secure cloud-based messaging app",
     "Icon": "C",
     "Color": "#0088CC",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -195,7 +216,8 @@
     "Description": "Remote desktop and online meeting software",
     "Icon": "C",
     "Color": "#0E8EE9",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Communications",
@@ -204,7 +226,8 @@
     "Description": "Video conferencing and online meetings platform",
     "Icon": "C",
     "Color": "#2D8CFF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Development",
@@ -213,7 +236,8 @@
     "Description": "Official IDE for Android app development",
     "Icon": "D",
     "Color": "#3DDC84",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -222,7 +246,8 @@
     "Description": "Build and share containerised apps and microservices",
     "Icon": "D",
     "Color": "#2496ED",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -231,7 +256,8 @@
     "Description": "Distributed version control system",
     "Icon": "D",
     "Color": "#F05033",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -240,7 +266,8 @@
     "Description": "GUI client for managing GitHub repositories",
     "Icon": "D",
     "Color": "#24292E",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -249,16 +276,18 @@
     "Description": "Cross-platform graphical Git client",
     "Icon": "D",
     "Color": "#169287",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
     "Name": "Insomnia",
-    "Id": "Insomnia.Insomnia",
+    "Id": "Kong.Insomnia",
     "Description": "API design, debug and testing platform",
     "Icon": "D",
     "Color": "#4000BF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -267,7 +296,8 @@
     "Description": "Manage all JetBrains IDEs from one place",
     "Icon": "D",
     "Color": "#FF318C",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -276,7 +306,8 @@
     "Description": "JavaScript runtime built on Chrome V8 engine",
     "Icon": "D",
     "Color": "#68A063",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -285,7 +316,8 @@
     "Description": "Advanced source code and text editor",
     "Icon": "D",
     "Color": "#90E59A",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -294,7 +326,8 @@
     "Description": "API platform for building and testing APIs",
     "Icon": "D",
     "Color": "#FF6C37",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -303,7 +336,8 @@
     "Description": "Python programming language runtime",
     "Icon": "D",
     "Color": "#FFD43B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -312,7 +346,8 @@
     "Description": "Dynamic open-source programming language",
     "Icon": "D",
     "Color": "#CC342D",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -321,7 +356,8 @@
     "Description": "Sophisticated text editor for code and markup",
     "Icon": "D",
     "Color": "#FF9800",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -330,7 +366,8 @@
     "Description": "Lightweight but powerful code editor by Microsoft",
     "Icon": "D",
     "Color": "#007ACC",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -339,7 +376,8 @@
     "Description": "VS Code binaries without Microsoft telemetry",
     "Icon": "D",
     "Color": "#2B7CBB",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Development",
@@ -348,7 +386,8 @@
     "Description": "Modern tabbed terminal for PowerShell, CMD and WSL",
     "Icon": "D",
     "Color": "#0078D4",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Document",
@@ -357,7 +396,8 @@
     "Description": "Creates PDFs from any printable application",
     "Icon": "X",
     "Color": "#FF5722",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Document",
@@ -366,7 +406,8 @@
     "Description": "Fast and lightweight PDF reader",
     "Icon": "X",
     "Color": "#EE3124",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Document",
@@ -375,7 +416,8 @@
     "Description": "Free office suite: Writer, Calc, Impress and more",
     "Icon": "X",
     "Color": "#18A303",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Document",
@@ -384,7 +426,8 @@
     "Description": "Universal document viewer supporting PDF, epub and more",
     "Icon": "X",
     "Color": "#1D99F3",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Document",
@@ -393,7 +436,8 @@
     "Description": "Office suite fully compatible with Microsoft Office formats",
     "Icon": "X",
     "Color": "#FF6F00",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Document",
@@ -402,7 +446,8 @@
     "Description": "Fast minimal PDF, epub, mobi and DjVu viewer",
     "Icon": "X",
     "Color": "#1C98D8",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Gaming",
@@ -411,7 +456,8 @@
     "Description": "EA game launcher replacing the Origin client",
     "Icon": "G",
     "Color": "#FF4747",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -420,7 +466,8 @@
     "Description": "Game store and launcher for Epic Games titles",
     "Icon": "G",
     "Color": "#2B2B2B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -429,7 +476,8 @@
     "Description": "All-in-one gaming client for GOG library",
     "Icon": "G",
     "Color": "#9B59B6",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -438,7 +486,8 @@
     "Description": "Open-source launcher for Epic and GOG games",
     "Icon": "G",
     "Color": "#E6692B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -447,7 +496,8 @@
     "Description": "Ultra low latency remote desktop for gaming",
     "Icon": "G",
     "Color": "#6C4DE4",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -456,7 +506,8 @@
     "Description": "Open-source game library manager for all platforms",
     "Icon": "G",
     "Color": "#F05050",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -465,7 +516,8 @@
     "Description": "Most popular PC gaming platform in the world",
     "Icon": "G",
     "Color": "#1B2838",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Gaming",
@@ -474,7 +526,8 @@
     "Description": "Ubisoft game launcher and social platform",
     "Icon": "G",
     "Color": "#0070FF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Media",
@@ -483,7 +536,8 @@
     "Description": "Free and open-source multi-track audio editor",
     "Icon": "M",
     "Color": "#0000CC",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -492,7 +546,8 @@
     "Description": "Free and open 3D creation suite",
     "Icon": "M",
     "Color": "#E87D0D",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -501,7 +556,8 @@
     "Description": "Powerful e-book management and conversion tool",
     "Icon": "M",
     "Color": "#7A6C52",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -510,7 +566,8 @@
     "Description": "Professional video editing, color grading and audio",
     "Icon": "M",
     "Color": "#FF9F00",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -519,7 +576,8 @@
     "Description": "GNU Image Manipulation Program - free Photoshop alternative",
     "Icon": "M",
     "Color": "#9C4F00",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -528,7 +586,8 @@
     "Description": "Open-source video transcoder supporting any format",
     "Icon": "M",
     "Color": "#E74C3C",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -537,7 +596,8 @@
     "Description": "Free and open-source vector graphics editor",
     "Icon": "M",
     "Color": "#000000",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -546,7 +606,8 @@
     "Description": "Fast and compact image viewer and basic editor",
     "Icon": "M",
     "Color": "#007EC6",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -555,7 +616,8 @@
     "Description": "Free and open-source non-linear video editor",
     "Icon": "M",
     "Color": "#527AA8",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -564,7 +626,8 @@
     "Description": "Free professional digital painting application",
     "Icon": "M",
     "Color": "#3BABFF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -573,7 +636,8 @@
     "Description": "Feature-rich music manager and player",
     "Icon": "M",
     "Color": "#6B4F9E",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Media",
@@ -582,7 +646,8 @@
     "Description": "Free open-source streaming and screen recording software",
     "Icon": "M",
     "Color": "#302E31",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -591,7 +656,8 @@
     "Description": "Advanced screenshot and screen recording tool",
     "Icon": "M",
     "Color": "#0E88D2",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Media",
@@ -600,7 +666,8 @@
     "Description": "Digital music streaming service",
     "Icon": "M",
     "Color": "#1DB954",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Media",
@@ -609,7 +676,8 @@
     "Description": "Free and open-source cross-platform media player",
     "Icon": "M",
     "Color": "#FF7F00",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Productivity",
@@ -618,7 +686,8 @@
     "Description": "Powerful Windows automation scripting language",
     "Icon": "P",
     "Color": "#334455",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Productivity",
@@ -627,7 +696,8 @@
     "Description": "Advanced clipboard manager with search and scripting",
     "Icon": "P",
     "Color": "#40AB44",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -636,7 +706,8 @@
     "Description": "Clipboard manager that extends the standard Windows clipboard",
     "Icon": "P",
     "Color": "#0D7377",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -645,7 +716,8 @@
     "Description": "Makes screen colour temperature adapt to time of day",
     "Icon": "P",
     "Color": "#F5A623",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -654,7 +726,8 @@
     "Description": "Powerful yet simple-to-use screenshot tool",
     "Icon": "P",
     "Color": "#F46C00",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -663,7 +736,8 @@
     "Description": "Light-weight screenshot tool with annotation features",
     "Icon": "P",
     "Color": "#7FBA00",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -672,7 +746,8 @@
     "Description": "Secure cross-platform open-source password manager",
     "Icon": "P",
     "Color": "#6CAC4D",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Productivity",
@@ -681,7 +756,8 @@
     "Description": "Power-user utilities suite for Windows",
     "Icon": "P",
     "Color": "#0078D4",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Productivity",
@@ -690,7 +766,8 @@
     "Description": "All-in-one workspace for notes, tasks and databases",
     "Icon": "P",
     "Color": "#000000",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -699,7 +776,8 @@
     "Description": "Markdown note-taking with linked knowledge graph",
     "Icon": "P",
     "Color": "#7C3AED",
-    "Selected": false
+    "Selected": false,
+    "Scope": "user"
   },
   {
     "Category": "Productivity",
@@ -708,7 +786,8 @@
     "Description": "Free all-in-one PDF creator, editor and converter",
     "Icon": "P",
     "Color": "#E8151B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Productivity",
@@ -717,7 +796,8 @@
     "Description": "Free and open-source email client by Mozilla",
     "Icon": "P",
     "Color": "#0A84FF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Security",
@@ -726,7 +806,8 @@
     "Description": "Open-source password manager with cloud sync",
     "Icon": "S",
     "Color": "#175DDC",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Security",
@@ -735,7 +816,8 @@
     "Description": "Anti-malware and ransomware protection tool",
     "Icon": "S",
     "Color": "#00A1C9",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Security",
@@ -744,7 +826,8 @@
     "Description": "Secure and privacy-focused VPN service",
     "Icon": "S",
     "Color": "#6D4AFF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Security",
@@ -753,7 +836,8 @@
     "Description": "Free disk encryption software based on TrueCrypt",
     "Icon": "S",
     "Color": "#2C5F9E",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Security",
@@ -762,7 +846,8 @@
     "Description": "Network protocol analyser and packet capture tool",
     "Icon": "S",
     "Color": "#1679A7",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -771,7 +856,8 @@
     "Description": "Free file archiver with very high compression ratio",
     "Icon": "U",
     "Color": "#009FCC",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -780,7 +866,8 @@
     "Description": "Powerful batch file renaming utility",
     "Icon": "U",
     "Color": "#8E44AD",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -789,7 +876,8 @@
     "Description": "System info tool for CPU, RAM and motherboard details",
     "Icon": "U",
     "Color": "#E74C3C",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -798,7 +886,8 @@
     "Description": "HDD and SSD health monitoring and SMART tool",
     "Icon": "U",
     "Color": "#3498DB",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -807,7 +896,8 @@
     "Description": "Disk benchmark and read/write speed tester",
     "Icon": "U",
     "Color": "#2980B9",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -816,7 +906,8 @@
     "Description": "Instantly locate any file on Windows by name",
     "Icon": "U",
     "Color": "#1ABC9C",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -825,7 +916,8 @@
     "Description": "Highly customisable fan speed control application",
     "Icon": "U",
     "Color": "#5BA4CF",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -834,16 +926,18 @@
     "Description": "GPU information and real-time monitoring utility",
     "Icon": "U",
     "Color": "#27AE60",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
     "Name": "HWiNFO64",
-    "Id": "REALiX.HWiNFO",
+    "Id": "REALiX.HWiNFO64",
     "Description": "Comprehensive hardware info and real-time monitoring",
     "Icon": "U",
     "Color": "#E67E22",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -852,7 +946,8 @@
     "Description": "Monitors voltages, temperatures and fan speeds",
     "Icon": "U",
     "Color": "#C0392B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -861,7 +956,8 @@
     "Description": "GPU overclocking, monitoring and fan control utility",
     "Icon": "U",
     "Color": "#C0392B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -870,7 +966,8 @@
     "Description": "Install only required NVIDIA driver components",
     "Icon": "U",
     "Color": "#76B900",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -879,7 +976,8 @@
     "Description": "Keeps third-party apps automatically up to date",
     "Icon": "U",
     "Color": "#0078D4",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -888,7 +986,8 @@
     "Description": "Free and open-source BitTorrent client",
     "Icon": "U",
     "Color": "#4F81BD",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -897,7 +996,8 @@
     "Description": "Create bootable USB drives from ISO images fast",
     "Icon": "U",
     "Color": "#E02020",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -906,7 +1006,8 @@
     "Description": "Advanced system information tool by CCleaner makers",
     "Icon": "U",
     "Color": "#00B4D8",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -915,7 +1016,8 @@
     "Description": "Create multiboot USB drives supporting many ISO types",
     "Icon": "U",
     "Color": "#0277BD",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -924,7 +1026,8 @@
     "Description": "Visual disk usage statistics and cleanup tool",
     "Icon": "U",
     "Color": "#F39C12",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -933,7 +1036,8 @@
     "Description": "Powerful archive manager for RAR, ZIP and many formats",
     "Icon": "U",
     "Color": "#8B008B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Utilities",
@@ -942,7 +1046,8 @@
     "Description": "Fastest disk space analyser available for Windows",
     "Icon": "U",
     "Color": "#D35400",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Network",
@@ -951,7 +1056,8 @@
     "Description": "Fast and friendly network scanner",
     "Icon": "N",
     "Color": "#E44545",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Network",
@@ -960,7 +1066,8 @@
     "Description": "Free FTP, FTPS and SFTP client",
     "Icon": "N",
     "Color": "#BF0000",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Network",
@@ -969,7 +1076,8 @@
     "Description": "Enhanced terminal with SSH, X11 and network tools",
     "Icon": "N",
     "Color": "#2C3E90",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Network",
@@ -978,7 +1086,8 @@
     "Description": "Network discovery and security auditing tool",
     "Icon": "N",
     "Color": "#44AA99",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Network",
@@ -987,7 +1096,8 @@
     "Description": "Free SSH, Telnet and serial console client",
     "Icon": "N",
     "Color": "#008B8B",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   },
   {
     "Category": "Network",
@@ -996,6 +1106,7 @@
     "Description": "Free SFTP, SCP, S3 and FTP client for Windows",
     "Icon": "N",
     "Color": "#003366",
-    "Selected": false
+    "Selected": false,
+    "Scope": "machine"
   }
 ]
