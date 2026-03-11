@@ -407,7 +407,7 @@
         <div class="dot dot-green"></div>
         <div>
           <div class="card-label">Update All Apps button</div>
-          <div class="card-desc">A new <span class="tag">↑ Update All Apps</span> button in the mode bar launches an external PowerShell window running <span class="tag">winget upgrade --all</span> — completely non-blocking. WinTooler stays fully responsive while updates run.</div>
+          <div class="card-desc">A new <span class="tag">↑ Update All Apps</span> button in the mode bar launches an external PowerShell window running <span class="tag">winget upgrade --all --accept-source-agreements --accept-package-agreements -h</span> — completely non-blocking. WinTooler stays fully responsive while updates run.</div>
         </div>
       </div>
     </div>
@@ -426,6 +426,26 @@
       <div class="card-row">
         <div class="dot dot-green"></div>
         <div>
+          <div class="card-label">CLI Progress Bar — Install &amp; Uninstall</div>
+          <div class="card-desc">Both install and uninstall operations now show a live ASCII progress bar in the CLI window for every app, including the result status inline: <span class="tag">Installed</span>, <span class="tag tag-green">Already present</span>, or <span class="tag tag-red">Failed (0xHHHHHHHH)</span>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-row">
+        <div class="dot dot-green"></div>
+        <div>
+          <div class="card-label">Compact App List</div>
+          <div class="card-desc">Removed the macOS-style icon tiles from every app row. Each row now shows: app name (bold) + description and package ID on one compact line. More apps visible at once with less scrolling.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-row">
+        <div class="dot dot-green"></div>
+        <div>
           <div class="card-label">In-App Language Toggle (EN / ES)</div>
           <div class="card-desc">Switch between English and Spanish instantly using the pill toggle in the sidebar footer. All labels, titles, buttons, and status text update immediately — no restart required.</div>
         </div>
@@ -436,6 +456,36 @@
   <!-- Bug Fixes -->
   <div class="section">
     <div class="section-title">🔧 Bug Fixes</div>
+
+    <div class="card">
+      <div class="card-row">
+        <div class="dot dot-blue"></div>
+        <div>
+          <div class="card-label">Uninstall via winget with Progress Bar</div>
+          <div class="card-desc">Uninstall now runs <span class="tag">winget uninstall --id</span> with full exit code reporting and an ASCII progress bar matching the install flow. Shows <span class="tag tag-green">Removed</span> or <span class="tag tag-red">Failed (0xHHHHHHHH)</span> per app. List refreshes automatically after completion.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-row">
+        <div class="dot dot-blue"></div>
+        <div>
+          <div class="card-label">Windows Update Scan — Removed --include-unknown</div>
+          <div class="card-desc">The <span class="tag">--include-unknown</span> flag was removed from the Windows Update tab scan. It produced noisy output. The scan now runs a clean <span class="tag">winget upgrade</span> with no extra flags.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-row">
+        <div class="dot dot-blue"></div>
+        <div>
+          <div class="card-label">Update All Apps — Silent Mode (-h)</div>
+          <div class="card-desc">The external upgrade window now runs <span class="tag">winget upgrade --all --accept-source-agreements --accept-package-agreements -h</span>. The <span class="tag">-h</span> flag enables silent/headless mode — no interactive prompts per package.</div>
+        </div>
+      </div>
+    </div>
 
     <div class="card">
       <div class="card-row">

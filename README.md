@@ -38,8 +38,8 @@ Browse and install **111 curated apps** across 10 categories via winget — no b
 | 🔧 Utilities | 7-Zip, WinRAR, CPU-Z, GPU-Z, HWiNFO64, Rufus, Ventoy, Everything, qBittorrent… |
 
 - **Smart install cascade** — 6 retry attempts covering scope conflicts, CDN 404s and hash mismatches automatically
-- **Uninstall mode** — lists all winget-tracked apps installed on your system, remove with one click
-- **Update All Apps** — launches an external PowerShell window running `winget upgrade --all`
+- **Uninstall mode** — lists all winget-tracked apps installed on your system, remove with one click via winget uninstall
+- **Update All Apps** — launches an external PowerShell window running `winget upgrade --all --accept-source-agreements --accept-package-agreements -h`
 - **Live search** — filter the full catalog instantly by name or description
 - **Category sidebar** — browse by category or view all apps at once
 - **Bilingual** — full English / Spanish UI with in-app toggle
@@ -141,9 +141,14 @@ WinTooler supports **English** and **Spanish** with a live toggle in the sidebar
 
 ### v0.6.1 BETA — Build 4100
 - **New:** Unified Applications page (Install + Uninstall in one tab with mode bar)
-- **New:** "Update All Apps" button — launches external PowerShell window with `winget upgrade --all`
+- **New:** "Update All Apps" button — launches external PowerShell window with `winget upgrade --all --accept-source-agreements --accept-package-agreements -h`
 - **New:** Background winget ID validator — checks all 111 app IDs on first visit
 - **New:** In-app language toggle (EN / ES) — no restart required
+- **New:** CLI progress bar for app installs and uninstalls
+- **New:** Compact app list — removed icon tiles, rows now show name + description + ID in one line
+- **Fix:** Uninstall now uses `winget uninstall --id` with progress bar and exit code reporting
+- **Fix:** Windows Update scan no longer passes `--include-unknown` to avoid noisy output
+- **Fix:** `winget upgrade --all` updated to use `-h` (silent) flag
 - **Fix:** App install cascade now retries 6 ways (scope, no-scope, hash bypass) before failing
 - **Fix:** Removed blocking startup scan — app now opens instantly
 - **Fix:** Restore point 24hr warning suppressed — frequency bypass applied silently
