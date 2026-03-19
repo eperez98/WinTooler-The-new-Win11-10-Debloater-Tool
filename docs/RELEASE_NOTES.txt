@@ -1,0 +1,169 @@
+================================================================================
+  WinTooler V0.7 beta — Build 5035
+  Release Notes — March 2026
+  Author: ErickP (Eperez98)  |  License: GPL-3.0
+================================================================================
+
+OVERVIEW
+--------
+Build 5035 is the most feature-complete BETA release of WinTooler. The headline
+addition is a full ISO Creator pipeline that mounts an official Windows 11 ISO,
+applies DISM-based patches, and rebuilds a bootable ISO — all without downloading
+anything. A new Delete Restore Points tool joins the Repair page, and full dark
+mode coverage reaches every previously unthemed surface.
+
+STATS
+-----
+  376 apps in catalog (9 categories)
+   23 system tweaks
+   18 services managed
+    8 tool pages
+ 5000+ lines of WPF GUI code
+
+
+NEW FEATURES
+------------
+
+[NEW] ISO Creator — complete pipeline
+  Accepts an official Microsoft Windows 11 ISO. Mounts it with Mount-DiskImage,
+  strips read-only attributes, patches WIM(s) with DISM, and rebuilds with
+  oscdimg. No download required.
+
+[NEW] Remove Microsoft Bloatware (ISO Creator)
+  Queries real full package names from the mounted WIM using:
+    DISM /Get-ProvisionedAppxPackages
+  Matches 24 short-name prefixes and removes the exact full package name. Works
+  correctly across Win11 22H2, 23H2, 24H2, and 25H2 regardless of version suffix
+  changes.
+  Packages removed: Teams, MSTeams, Xbox (all), BingNews, BingWeather,
+  GamingApp, Solitaire, ZuneMusic, ZuneVideo, WindowsMaps, Todos, People,
+  Getstarted, FeedbackHub, SkypeApp, OfficeHub, Outlook, Cortana, Family, Clipchamp
+
+[NEW] Network Driver Injection (ISO Creator)
+  Checkbox + folder picker. Runs:
+    DISM /Add-Driver /Driver:"path" /Recurse
+  against the mounted install.wim.
+
+[NEW] App Package Embedding (ISO Creator)
+  Opens a popup window with the full 376-app catalog, live search, category
+  filter pills, and select all/none per filter. Selected apps are written as a
+  winget install batch script at WinTooler\Install-Apps.bat in the ISO root.
+  If Unattended Install is also enabled, a FirstLogonCommands entry is injected
+  into autounattend.xml to run the script automatically on first logon.
+
+[NEW] Unattended Install (ISO Creator)
+  Injects autounattend.xml with OOBE skips (EULA, wireless setup, online
+  account screens). Integrates with App Packages for a fully automated first
+  boot.
+
+[NEW] Delete All Restore Points (Repair page)
+  New card in the Repair tools grid. Uses:
+    vssadmin delete shadows /for=C: /all /quiet
+  followed by a WMI Win32_ShadowCopy sweep and Disable/Enable cycle to flush
+  the restore point registry list. Confirmation dialog shown before action.
+
+
+IMPROVEMENTS
+------------
+
+[IMP] Full dark mode coverage
+  Apply-Theme now repaints: Startup page rows (enabled/disabled colors) and
+  bottom status bar, DNS cards and text inputs, Backup export/import/saved
+  cards and section labels, ISO status log panel, log label and divider,
+  ISO app picker popup. SearchBox XAML style no longer hardcodes white
+  background.
+
+[IMP] ISO pipeline runs in background job
+  The entire ISO creation process runs in Start-Job with a DispatcherTimer
+  polling every 600ms. The GUI stays fully responsive during multi-gigabyte
+  WIM operations. Output protocol: PROGRESS:pct:msg, DONE:msg, ERROR:msg,
+  LOGINFO:[prefix] msg.
+
+[IMP] Read-only attribute strip after ISO mount
+  Immediately after Copy-Item from the mounted ISO drive, all files have the
+  ReadOnly flag cleared. A second explicit check on install.wim before DISM
+  mount prevents error 0xC1510111 (no write permissions).
+
+[IMP] CLI banner engine name
+  "Engine : WinUtil Modified Framework" -> "Engine : WinTooler Native Engine v0.7"
+
+[IMP] ISO page layout redesign
+  Step 1 now requires a source ISO (download fallback removed). Language
+  dropdown removed from visible UI. Steps renumbered 1-4. Clear validation
+  error when no ISO is selected. "How it works" and requirements cards updated.
+
+
+BUG FIXES
+---------
+
+[FIX] PS5.1 inline-if eliminated throughout
+  All instances of .Property = if (...) and $var = if (...) inside
+  ForEach-Object pipelines and stored scriptblocks converted to explicit
+  if { } else { } blocks. Resolves "The term 'if' is not recognized" crashes
+  across Startup Manager, App Manager, Tweaks, DNS, and ISO pages.
+
+[FIX] Startup Manager crash on Refresh List
+  Five inline-if assignments inside $script:StartupBuildList's ForEach-Object
+  pipeline converted to explicit if/else.
+
+[FIX] Write-WTLog not found in background job
+  Self-installing Write-WTLog stub added to each ISO module file. Outputs
+  LOGINFO: prefixed lines to the job output stream which the timer handler
+  strips and displays cleanly.
+
+[FIX] Receive-Job duplication
+  Removed -Keep from the timer's Receive-Job call. Previously every tick
+  re-read all output from the start, printing each log line once per tick.
+
+[FIX] Object[] to UInt32 conversion in winget embed
+  Replaced array += concat and Out-File with StringBuilder +
+  File.WriteAllText. XML patching replaced with SelectSingleNode +
+  XmlNamespaceManager + XPath to avoid member enumeration on array results.
+
+[FIX] App picker category filter
+  WPF mouse event handlers run in script scope. All shared picker state moved
+  to $script:-scoped variables (ISOPopCurCat, ISOPopRows, ISOPopLocalSel,
+  helper functions). Category pills now filter correctly.
+
+[FIX] Bloatware removal reporting 0 packages
+  DISM /Remove-ProvisionedAppxPackage requires the full version-qualified
+  package name. Fixed by querying DISM /Get-ProvisionedAppxPackages first
+  and matching by short-name prefix before removing.
+
+[FIX] Duplicate handler line causing brace imbalance crash
+  Multiple patch operations produced duplicate Add_Click({ lines which
+  created an unclosed brace, crashing the entire Start-WinToolerGUI function.
+  Detected and removed. Brace depth verification added to post-patch checks.
+
+[FIX] MessageBox broken string literal
+  Python byte string concatenation injected a raw newline inside a PS double-
+  quoted string, leaving an unterminated literal. Replaced with explicit $msg
+  variable assignment using backtick-n escape sequences.
+
+
+KNOWN LIMITATIONS
+-----------------
+* ISO Creator requires DISM (built-in) or Windows ADK for oscdimg. ADK
+  auto-install may require a system restart before first ISO build.
+* App embedding in ISO requires winget on the target system post-install.
+  Install-Apps.bat validates winget presence at runtime.
+* Chocolatey requires a separate manual install; winget is primary.
+* Startup Manager task disabling requires the Task Scheduler service running.
+* Segoe MDL2 / Fluent icons may not render on Windows 10 < build 19041.
+  Unicode ASCII fallbacks are used automatically.
+
+
+ROADMAP
+-------
+v0.8 BETA — Power Features
+  Hosts File Editor, Driver Updater, Performance Benchmarks (WinSAT),
+  Registry Cleaner, WSL Manager, Custom Tweak Builder, more UI languages
+
+v1.0 Release Candidate
+  .msi / NSIS installer, auto-update notifications, code-signed script,
+  full test coverage (Win10 21H2, Win11 22H2/23H2/24H2, Intel/AMD/ARM64)
+
+
+================================================================================
+  GPL-3.0 (C) ErickP (Eperez98)  |  github.com/eperez98
+================================================================================
